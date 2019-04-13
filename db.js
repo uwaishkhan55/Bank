@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
+const db = new Sequelize('wa8LmyrLff','wa8LmyrLff','AOaH4xQCqu',
 {
-    host: 'sql12.freemysqlhosting.net',
-    port: 3306,
+    host:" remotemysql.com",
     dialect: 'mysql',
     dialectOptions: {
       useUTC: false, //for reading from database
@@ -89,7 +88,7 @@ Transaction.belongsTo(Accounts, {foreignKey: 'account_id'})
 // Users.belongsTo(Accounts, {foreignKey: 'user_id'})
 // Products.hasMany(CartItems, {foreignKey: 'product_id'})
 // CartItems.belongsTo(Products, {foreignKey: 'product_id'})
-db.sync(()=>
+db.sync({force:true},()=>
 {
     console.log('working fine')
 })
