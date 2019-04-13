@@ -13,7 +13,7 @@ route.get('/details', async(req,res)=>
       { include: [{ model: Customers},{
         model: Accounts
        }],
-          where:{account_id:1}})
+          where:{account_id:req.user.id}})
 res.send(item1)
 console.log("----------"+JSON.stringify(item1)+"---------------"+JSON.stringify(req.user)+"---->>")
 })
