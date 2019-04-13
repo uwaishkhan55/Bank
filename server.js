@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { db } = require('./db')
+const { db,Accounts } = require('./db')
 const session =  require('express-session')
 const passport = require('./passport')
 const {Products,CartItems}=require('./db')
@@ -26,6 +26,12 @@ app.use('/account', (require('./routes/account').route))
 // app.use('/cart', (require('./routes/cart').route))
 
 const port=process.env.PORT || 3000
+app.get('/giveaccount',async (req,res)=>
+{
+  let item1=await Accounts.findOne({where:{id:req.user.id}})
+  console.log("---------------------"+item1+">>>>>>>>>>>.")
+  res.send(item1)
+})
 
 db.sync()
   .then(() => {

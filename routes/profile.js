@@ -7,8 +7,9 @@ route.get('/',(req,res)=>
     return res.render('profile')
     res.render('login')
 })
+
 route.post('deposit/put', async(req,res)=>
-{ console.log("---------------------")
+{
   let item1=await Accounts.findOne({where:{id:req.body.accountno}})
   let balance=parseInt(item1.balance)+parseInt(req.body.money)
   let item = await Accounts.update({

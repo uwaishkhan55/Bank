@@ -361,4 +361,13 @@ My Transactions	</a></li>
     <script src="js/bootstrap.js"></script>
 
 </body>
+<script>
+	$(()=>
+	{
+		$.get('/giveaccount',(data)=>
+		{
+             alert("welcome"+data.accountNo)
+		})
+	})
+</script>
 </html>
