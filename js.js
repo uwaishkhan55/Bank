@@ -1,28 +1,11 @@
-const {db}=require('./db')
-const Sequelize = require('sequelize')
-function generateMyId()
+const {db,Customers,Accounts,Customer_account}=require('./db')
+async function get()
 {
-     return Math.floor(1000000000 + Math.random() * 900000000);
-}
-const Accounts = db.define('account',{
-    uuid: {
-           type: Sequelize.UUID,
-           defaultValue: function() {
-          return generateMyId()
-        },   
-        primaryKey: true
-      }
-})
-
-
- async function get()
-{
-    let item = await Accounts.create(
-        {
-    
-        }
-    )
-    console.log(item)
+  let item=await Accounts.findOne({where:{id:1}})
+  console.log(JSON.stringify("--------------->>>>>>"+item.balance+"-----------"))
 }
 get()
+
+
+
 

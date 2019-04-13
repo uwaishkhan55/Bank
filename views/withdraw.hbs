@@ -74,17 +74,17 @@
 				<!-- top-nav -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html" class="active">Home</a></li>
+						<li><a href="index.html">Home</a></li>
 						
-						<li><a href="/account" class="scroll"> Account Details</a></li>    
-						<li><a href="profile/withdraw"  class="scroll">
+						<li><a href="account" class="scroll"> Account Details</a></li>    
+						<li><a href="withdraw"  class="scroll  active">
 							Withdraw Amount
 							</a></li>   
 							
-							<li><a href="profile/mytransaction" class="scroll">	
+							<li><a href="transaction" class="scroll">	
 My Transactions	</a></li>  
 					
-						<li><a href="profile/depositamount" class="scroll">
+						<li><a href="deposit" class="scroll">
 							Deposit Amount
 							</a></li>
 					</ul>  
@@ -94,16 +94,26 @@ My Transactions	</a></li>
 		</div><script>
 		</script>
   <div id="show1"> 
-        <form action="/profile/withdraw/put" method="post">
+        <form action="withdraw/put" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Account Number</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account Number...." name="accountno">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Amount</label>
-    <input type="text" class="form-control" anme="money" id="exampleInputPassword1" placeholder="Amount">
+    <input type="text" class="form-control" name="money" id="exampleInputPassword1" placeholder="Amount">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" onclick="submitClick( )" class="btn btn-primary">Submit</button>
+	<script >
+
+  function submitClick( ) //function shows message after submitting information
+
+  {
+
+  alert("Thank you for your time! Your details have been submitted!");
+
+  }
+	</script>
 </form>  </div>
 
 

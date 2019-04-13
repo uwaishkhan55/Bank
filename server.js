@@ -19,6 +19,10 @@ app.use(passport.session())
 app.use('/login', (require('./routes/login').route))
 app.use('/signup', (require('./routes/signup').route))
 app.use('/profile', (require('./routes/profile').route))
+app.use('/withdraw', (require('./routes/withdraw').route))
+app.use('/deposit', (require('./routes/deposit').route))
+app.use('/transaction', (require('./routes/transaction').route))
+app.use('/account', (require('./routes/account').route))
 // app.use('/cart', (require('./routes/cart').route))
 
 const port=process.env.PORT || 3000

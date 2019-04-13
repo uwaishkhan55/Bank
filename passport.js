@@ -2,12 +2,12 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
 const {
-  Users
+  Customers
 } = require('./db')
 
 passport.use(new LocalStrategy(
   function (username, password, done) {
-    Users.findOne({
+    Customers.findOne({
       where: {
         username: username
       }
@@ -37,7 +37,7 @@ passport.serializeUser(
 
 passport.deserializeUser(
   function (userId, done) {
-    Users.findByPk(userId)
+    Customers.findByPk(userId)
       .then((user) => {
         done(null, user)
       })
