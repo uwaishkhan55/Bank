@@ -94,7 +94,7 @@ My Transactions	</a></li>
 		</div><script>
 		</script>
   <div id="show1"> 
-        <form action="/profile/transaction/put" method="post">
+        <form ></form>
   <div class="form-group">
     <label for="exampleInputEmail1">Account Number</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account Number...." name="accountno">
@@ -107,8 +107,19 @@ My Transactions	</a></li>
        <option name="lastyear" >Last Year</option>
    </select>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>  </div>
+  <button  onclick="submit()" class="btn btn-primary">Submit</button>
+ </div>
+<script>
+
+function submit()
+	 {
+		    $("#show1").hide()
+				$.get('/transaction/put',(data)=>
+				{ console.log(data)
+              $("#append").append(`<h1>${data[0].totalBalance}</h1>`)
+				})}
+</script>
+	 
 
 
 <!--footer-->

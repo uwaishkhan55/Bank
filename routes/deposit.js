@@ -1,6 +1,6 @@
 const route = require('express').Router()
 const passport = require('passport')
-const {Accounts}=require('../db')
+const {Accounts,Transaction}=require('../db')
 route.get('/',(req,res)=>
 {
     if(req.user)
@@ -19,8 +19,18 @@ route.post('/put', async(req,res)=>
   }
 }
 )
+console.log(";;;;;;;;;;;;;"+req.body.money+"///////////////////")
+let item2=await Transaction.create({
+ amount:parseInt(req.body.money),
+ account_id:item1.id,
+ transactionmode:"credit",
+ totalBalance:balance.toString()
+})
+   
 res.redirect('/deposit')
 })
+ 
+ 
 
 
 module.exports = {

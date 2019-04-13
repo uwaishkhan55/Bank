@@ -1,12 +1,18 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize({
-  dialect: 'sqlite',
-  retry: {
-    max: 10
-  },
-  storage: __dirname+'/tests2.db',
-})
+const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
+{
+    host: 'sql12.freemysqlhosting.net',
+    port: 3306,
+    dialect: 'mysql',
+    dialectOptions: {
+      useUTC: false, //for reading from database
+      dateStrings: true,
+      typeCast: true
+       },
+timezone: '+05:30' //for writing to database
+   })
+
 
 function generateMyId()
 {
@@ -20,14 +26,14 @@ const Accounts = db.define('account',{
          }
        },
        customer_id:Sequelize.INTEGER,
-       balance:Sequelize.INTEGER,
+       balance:Sequelize.STRING(40),
        type:Sequelize.STRING(10),
  })
 const Customers = db.define('customer', {
   username:Sequelize.STRING(20),
   fullname:Sequelize.STRING(20),
   password:Sequelize.STRING(20),
-  email:Sequelize.STRING(20),
+  email:Sequelize.STRING,
   gender:Sequelize.STRING(20),
   dateofbirth:Sequelize.STRING(20),
   city:Sequelize.STRING(20),
@@ -36,6 +42,22 @@ const Customers = db.define('customer', {
   accounttype:Sequelize.STRING(20),
  
 })
+const Transaction=db.define('transaction',{
+  transaction_id:
+  {
+    type:Sequelize.INTEGER,
+    defaultValue: function() {
+      return generateMyId()
+    }
+
+  },
+  account_id:Sequelize.INTEGER,
+  amount:Sequelize.INTEGER,
+  transactionmode:Sequelize.STRING(20),
+  totalBalance:Sequelize.STRING(20)
+}
+
+)
 const Customer_account = db.define('customer_account',{
     account_id:Sequelize.INTEGER,
     customer_id:Sequelize.INTEGER
@@ -44,6 +66,9 @@ Customers.hasMany(Customer_account, {foreignKey: 'customer_id'})
 Customer_account.belongsTo(Customers, {foreignKey: 'customer_id'})
 Accounts.hasMany(Customer_account, {foreignKey: 'account_id'})
 Customer_account.belongsTo(Accounts, {foreignKey: 'account_id'})
+Accounts.hasMany(Transaction, {foreignKey: 'account_id'})
+Transaction.belongsTo(Accounts, {foreignKey: 'account_id'})
+
 
 // Vendors.hasMany(Products)
 // Products.belongsTo(Vendors)
@@ -69,5 +94,5 @@ db.sync(()=>
     console.log('working fine')
 })
 module.exports = {
-db,Customers,Accounts,Customer_account
+db,Customers,Accounts,Customer_account,Transaction
 }

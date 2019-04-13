@@ -18,13 +18,13 @@ route.post('/',async (req, res) => {
   customertype:req.body.reg_cust_type,
   accounttype:req.body.account_type
   }).then(async (user) => {
-   await Accounts.create({
+  let item= await Accounts.create({
      customer_id:user.id,
      balance:0
   }).then(async (user)=>
   {
     
-    await Customer_account.create({
+    let item=await Customer_account.create({
          account_id:user.id,
          customer_id:user.customer_id
     })
