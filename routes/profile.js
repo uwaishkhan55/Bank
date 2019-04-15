@@ -1,10 +1,30 @@
 const route = require('express').Router()
 const passport = require('passport')
 const {Accounts}=require('../db')
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+         user: 'uwaishkhanbns@gmail.com',
+         pass: 'uwaish55@@'
+     }
+ });
+ const mailOptions = {
+  from: 'uwaishkhanbns@gmail.com', // sender address
+  to: 'uwaishkhan55@gmail.com', // list of receivers
+  subject: 'your account number iss....', // Subject line
+  html: '<p>Your html here</p>'// plain text body
+};
 route.get('/',(req,res)=>
 {
     if(req.user)
     return res.render('profile')
+    transporter.sendMail(mailOptions, function (err, info) {
+      if(err)
+        console.log(err)
+      else
+        console.log(info);
+   });
     res.render('login')
 })
 
