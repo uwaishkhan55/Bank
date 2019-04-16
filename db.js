@@ -16,7 +16,7 @@ timezone: '+05:30' //for writing to database
 // {
 //   host: 'localhost',
 //     dialect: 'mysql',
-//     dialectOptions: {n
+//     dialectOptions: {
 //       useUTC: false, //for reading from database
 //       dateStrings: true,
 //       typeCast: true
