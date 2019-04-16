@@ -12,6 +12,17 @@ const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
        },
 timezone: '+05:30' //for writing to database
    })
+// const db = new Sequelize('bankdb','uwaish','uwaish55',
+// {
+//   host: 'localhost',
+//     dialect: 'mysql',
+//     dialectOptions: {n
+//       useUTC: false, //for reading from database
+//       dateStrings: true,
+//       typeCast: true
+//        },
+// timezone: '+05:30' //for writing to database
+//    })
 
 
 function generateMyId()

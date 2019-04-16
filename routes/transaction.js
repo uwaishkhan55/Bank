@@ -8,11 +8,12 @@ route.get("/", (req,res)=>
   if(req.user)  return res.render('transaction')
    res.render('login')
 })
-route.get('/put', async(req,res)=>
+route.post('/put', async(req,res)=>
 {
-  let item=await Accounts.findOne({where:{account_id:req.user.id}})
+  let item=await Accounts.findOne({where:{accountNo:req.body.accountno}})
   let item1=await Transaction.findAll({where:{account_id:item.id}})
-   res.send(item1)
+  console.log(JSON.stringify(item1))
+   res.render("transactiontable",{item1})
 })
 
 

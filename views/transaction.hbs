@@ -84,41 +84,37 @@
 							<li><a href="transaction" class="scroll active">	
 My Transactions	</a></li>  
 					
-						<li><a href="depositt" class="scroll">
+						<li><a href="deposit" class="scroll">
 							Deposit Amount
 							</a></li>
 					</ul>  
 					<div class="clearfix"> </div>	
 				</div>
 			</nav>    
-		</div><script>
-		</script>
-  <div id="show1"> 
-        <form ></form>
+		</div>
+ <div id="show1"> 
+        <form action="transaction/put" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Account Number</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Account Number...." name="accountno">
   </div>
   <div class="form-group">
-   <select value="select" class="form-control">
-       <option name="today" >Today</option>
-       <option name="last7">Last 7 days</option>
-       <option name="lastmonth" >Last Month</option>
-       <option name="lastyear" >Last Year</option>
-   </select>
+    <select name="" id="">
+			<option value="">Last 30 days!!</option>
+		</select>
   </div>
-  <button  onclick="submit()" class="btn btn-primary">Submit</button>
- </div>
-<script>
+  <button type="submit" onclick="submitClick" class="btn btn-primary">Submit</button>
+</form>  </div>
+	<script >
 
-function submit()
-	 {
-		    $("#show1").hide()
-				$.get('/transaction/put',(data)=>
-				{ console.log(data)
-              $("#append").append(`<h1>${data[0].totalBalance}</h1>`)
-				})}
-</script>
+  function submitClick( ) //function shows message after submitting information
+
+  {
+
+  alert("Thank you for your time! Your details have been submitted!");
+
+  }
+	</script>
 	 
 
 
