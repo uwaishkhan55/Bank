@@ -20,7 +20,14 @@ route.post('/put', async(req,res)=>
       loanNo:req.body.Loanno
     }
   }
-  )
+  ).then(async (user)=>
+  {
+       let i=await information.destroy({
+      where:{
+        Loanno:req.body.Loanno
+      }})
+  })
+ 
 
   res.redirect('/index.html')
   })

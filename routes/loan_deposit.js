@@ -16,6 +16,7 @@ route.get('/',(req,res)=>
 route.post('/put', async(req,res)=>
 {console.log("--------------------->>>>"+req.body)
   let item1=await Loan.findOne({where:{loanNo:req.body.loanno}})
+  if(parseInt(item1.balance)<parseInt(req.body.money)) return res.send("Please enter correct amount.")
   let balance=parseInt(item1.balance)-parseInt(req.body.money)
   let item = await Loan.update({
      balance: balance,

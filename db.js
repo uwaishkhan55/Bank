@@ -1,17 +1,17 @@
 const Sequelize = require('sequelize')
 
-// const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
-// {
-//   host: 'sql12.freemysqlhosting.net',
-//   port: 3306,
-//     dialect: 'mysql',
-//     dialectOptions: {
-//       useUTC: false, //for reading from database
-//       dateStrings: true,
-//       typeCast: true
-//        },
-// timezone: '+05:30' //for writing to database
-//    })
+const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
+{
+  host: 'sql12.freemysqlhosting.net',
+  port: 3306,
+    dialect: 'mysql',
+    dialectOptions: {
+      useUTC: false, //for reading from database
+      dateStrings: true,
+      typeCast: true
+       },
+timezone: '+05:30' //for writing to database
+   })
 // const db = new Sequelize('bankdb','uwaish','uwaish55',
 // {
 //   host: 'localhost',
@@ -23,13 +23,13 @@ const Sequelize = require('sequelize')
 //        },
 // timezone: '+05:30' //for writing to database
 //    })
-const db = new Sequelize({
-  dialect: 'sqlite',
-  //retry: {
-    //max: 10
- // },
-  storage: __dirname+'/tests2.db',
-})
+// const db = new Sequelize({
+//   dialect: 'sqlite',
+//   //retry: {
+//     //max: 10
+//  // },
+//   storage: __dirname+'/tests2.db',
+// })
 
 function generateMyId()
 {
@@ -145,7 +145,7 @@ Customer_loan.belongsTo(Loan, {foreignKey: 'loan_id'})
 // Users.belongsTo(Accounts, {foreignKey: 'user_id'})
 // Products.hasMany(CartItems, {foreignKey: 'product_id'})
 // CartItems.belongsTo(Products, {foreignKey: 'product_id'})
-db.sync(()=>
+db.sync({force:true},()=>
 {
     console.log('working fine')
 })

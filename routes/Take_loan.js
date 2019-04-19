@@ -13,7 +13,7 @@ route.post('/', async(req,res)=>{
     balance:req.body.money,
     desc:req.body.desc
   })
-  
+  res.render('Take_loan')
 /*{ console.log("---------------------"+"req.body")
   let item1=await Loan.findOne({where:{loanNo:req.body.Loanno}})
   let balance=parseInt(item1.balance)+parseInt(req.body.money)

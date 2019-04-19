@@ -7,6 +7,7 @@ route.get('/',async(req,res)=>
 {let item=await information.findAll({
     where:{}
 })
+
    res.send(item)
 })
 route.get('/loan',async(req,res)=>{

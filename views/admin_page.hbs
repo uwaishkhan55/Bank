@@ -22,6 +22,13 @@
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- //web-fonts --> 
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
     #show1{
         padding: 60px;
@@ -106,16 +113,17 @@
 		<div id="admindiv">
 			<h1 id="p">LOGIN AS ADMIN </h1>
 <br>
-    
-		<input id="admin" placeholder="username">
+    <div id="box">	<input id="admin" placeholder="username">
 		<br><br>
-		<input type="password" placeholder="Password">
+		<input type="password" id="admin1" placeholder="Password">
 		<br><br>
 		<button onclick="call1()" id="btn" class="btn btn-primary">Login</button></div>
+	</div>
 		<script>
 			 function call1(){
 			 let admin=$('#admin').val()
-			 if(admin=="Sarosh Khan"){
+			 let admin1=$('#admin1').val()
+			 if(admin=="Sarosh Khan"&&admin1=="uwaish"){
 				 $('#admindiv').hide()
 				 $('#table').show()
 				 $('#show1').show()
@@ -126,10 +134,11 @@
 				 $('#admindiv').show()
 				 alert("it seems like you are not an admin!")
 			 }}
+			 
 		 </script>
 	 
 		
-         <table id="table" border="2">
+         <table id="table" class="table table-striped table-dark">
     <tr>
     <th>Loanno</th>
     <th>Amount request</th>
