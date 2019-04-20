@@ -145,7 +145,7 @@ Customer_loan.belongsTo(Loan, {foreignKey: 'loan_id'})
 // Users.belongsTo(Accounts, {foreignKey: 'user_id'})
 // Products.hasMany(CartItems, {foreignKey: 'product_id'})
 // CartItems.belongsTo(Products, {foreignKey: 'product_id'})
-db.sync({force:true},()=>
+db.sync(()=>
 {
     console.log('working fine')
 })
