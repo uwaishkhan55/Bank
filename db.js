@@ -101,7 +101,7 @@ const Loan_Customers = db.define('loancustomer', {
   username:Sequelize.STRING(20),
   fullname:Sequelize.STRING(20),
   password:Sequelize.STRING(20),
-  email:Sequelize.STRING(20),
+  email:Sequelize.STRING,
   gender:Sequelize.STRING(20),
   dateofbirth:Sequelize.STRING(20),
   city:Sequelize.STRING(20),
@@ -145,7 +145,7 @@ Customer_loan.belongsTo(Loan, {foreignKey: 'loan_id'})
 // Users.belongsTo(Accounts, {foreignKey: 'user_id'})
 // Products.hasMany(CartItems, {foreignKey: 'product_id'})
 // CartItems.belongsTo(Products, {foreignKey: 'product_id'})
-db.sync(()=>
+db.sync({force:true},()=>
 {
     console.log('working fine')
 })
