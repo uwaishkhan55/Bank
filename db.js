@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize('sql12287945','sql12287945','VRFgS5S4ql',
+const db = new Sequelize('wa8LmyrLff','wa8LmyrLff','AOaH4xQCqu',
 {
-  host: 'sql12.freemysqlhosting.net',
+  host: 'remotemysql.com',
   port: 3306,
     dialect: 'mysql',
     dialectOptions: {
@@ -145,7 +145,7 @@ Customer_loan.belongsTo(Loan, {foreignKey: 'loan_id'})
 // Users.belongsTo(Accounts, {foreignKey: 'user_id'})
 // Products.hasMany(CartItems, {foreignKey: 'product_id'})
 // CartItems.belongsTo(Products, {foreignKey: 'product_id'})
-db.sync(()=>
+db.sync({force:true},()=>
 {
     console.log('working fine')
 })
